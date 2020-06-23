@@ -12,7 +12,6 @@ import CoreData
 class TodoTableViewController: UITableViewController {
     
     //MARK: Properties
-
     
     lazy var fetchResultController: NSFetchedResultsController<Todo> = {
         let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
@@ -31,20 +30,7 @@ class TodoTableViewController: UITableViewController {
         return frc
     }()
     
-
-    
-    //MARK: IBOutlets
-    
-    //MARK: View Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    let todoController = TodoController()
     
     // MARK: - Table view data source
     
@@ -66,30 +52,32 @@ class TodoTableViewController: UITableViewController {
         
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             let todo = fetchResultController.object(at: indexPath)
-            let context = CoreDataStack.shared.mainContext
-            context.delete(todo)
-            do {
-                try context.save()
-                tableView.reloadData()
-            } catch {
-                context.reset()
-                NSLog("Error saving managed object contect (delete task): \(error)")
+            //Deletion todo from server and coredata
+            todoController.deleteTaskFromServer(todo) { result in
+                guard let _ = try? result.get() else {
+                    return
+                }
+                let context = CoreDataStack.shared.mainContext
+                context.delete(todo)
+                do {
+                    try context.save()
+                } catch {
+                    context.reset()
+                    NSLog("Error saving managed object contect (delete task): \(error)")
+                }
             }
-            
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let sectionInfo = fetchResultController.sections?[section] else { return nil }
-         
-       
+        
+        
         return sectionInfo.name
         
     }
@@ -109,15 +97,18 @@ class TodoTableViewController: UITableViewController {
      }
      */
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToCreateVC" {
+            if let navC = segue.destination as? UINavigationController,
+                let createTodoVC = navC.viewControllers.first as? CreateTodoViewController {
+                createTodoVC.todoController = todoController
+            }
+        }
+    }
+    
     
 }
 

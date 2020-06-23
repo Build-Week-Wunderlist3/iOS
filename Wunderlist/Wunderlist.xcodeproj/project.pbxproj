@@ -13,7 +13,6 @@
 		CA503A1A249AFDC100AF1B57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA503A18249AFDC100AF1B57 /* Main.storyboard */; };
 		CA503A1C249AFDC700AF1B57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA503A1B249AFDC700AF1B57 /* Assets.xcassets */; };
 		CA503A1F249AFDC700AF1B57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA503A1D249AFDC700AF1B57 /* LaunchScreen.storyboard */; };
-		CA503A27249B2D0C00AF1B57 /* Todo1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A26249B2D0C00AF1B57 /* Todo1.swift */; };
 		CA503A29249B2D3400AF1B57 /* WelcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A28249B2D3400AF1B57 /* WelcomingViewController.swift */; };
 		CA503A2B249B2D4500AF1B57 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A2A249B2D4500AF1B57 /* SignUpViewController.swift */; };
 		CA503A2D249B2D5500AF1B57 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A2C249B2D5500AF1B57 /* LogInViewController.swift */; };
@@ -24,6 +23,7 @@
 		CA8FB388249C657A00D6834B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB387249C657A00D6834B /* CoreDataStack.swift */; };
 		CA8FB38A249C778300D6834B /* CreateTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB389249C778300D6834B /* CreateTodoViewController.swift */; };
 		CA8FB38C249C814B00D6834B /* Todo+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB38B249C814B00D6834B /* Todo+Convenience.swift */; };
+		CABD3CF424A1D0DF00FFE152 /* TodoRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD3CF324A1D0DF00FFE152 /* TodoRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,6 @@
 		CA503A1B249AFDC700AF1B57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA503A1E249AFDC700AF1B57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA503A20249AFDC700AF1B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA503A26249B2D0C00AF1B57 /* Todo1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo1.swift; sourceTree = "<group>"; };
 		CA503A28249B2D3400AF1B57 /* WelcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomingViewController.swift; sourceTree = "<group>"; };
 		CA503A2A249B2D4500AF1B57 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CA503A2C249B2D5500AF1B57 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		CA8FB387249C657A00D6834B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		CA8FB389249C778300D6834B /* CreateTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoViewController.swift; sourceTree = "<group>"; };
 		CA8FB38B249C814B00D6834B /* Todo+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Convenience.swift"; sourceTree = "<group>"; };
+		CABD3CF324A1D0DF00FFE152 /* TodoRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +123,10 @@
 		CA8FB37C249C589400D6834B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CA503A26249B2D0C00AF1B57 /* Todo1.swift */,
 				CA8FB384249C5E2A00D6834B /* Wunderlist.xcdatamodeld */,
 				CA8FB387249C657A00D6834B /* CoreDataStack.swift */,
 				CA8FB38B249C814B00D6834B /* Todo+Convenience.swift */,
+				CABD3CF324A1D0DF00FFE152 /* TodoRepresentation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -228,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA503A2B249B2D4500AF1B57 /* SignUpViewController.swift in Sources */,
+				CABD3CF424A1D0DF00FFE152 /* TodoRepresentation.swift in Sources */,
 				CA8FB383249C598D00D6834B /* TodoTableViewController.swift in Sources */,
 				CA503A29249B2D3400AF1B57 /* WelcomingViewController.swift in Sources */,
 				CA503A2F249B339C00AF1B57 /* PasswordSetUp.swift in Sources */,
@@ -240,7 +241,6 @@
 				CA503A13249AFDC100AF1B57 /* AppDelegate.swift in Sources */,
 				CA39656624A1C89900849307 /* TodoController.swift in Sources */,
 				CA503A15249AFDC100AF1B57 /* SceneDelegate.swift in Sources */,
-				CA503A27249B2D0C00AF1B57 /* Todo1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

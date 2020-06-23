@@ -9,47 +9,65 @@
 import UIKit
 
 class CreateTodoViewController: UIViewController {
-
+    
     
     //MARK: Properties
-    
-    
+    var todoController: TodoController?
+    private var remiderDate: UIDatePicker?
     //MARK: IBoutlets
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var notesTextView: UITextView!
+    @IBOutlet var dateTextField: UITextField!
     
     //MARK: View Lifecycle
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupDatePicker()
+        
     }
     
     //MARK: Actions
     
-    @IBAction func setDate(_ sender: UIDatePicker) {
+    private func setupDatePicker() {
+        remiderDate = UIDatePicker()
+        remiderDate?.datePickerMode = .dateAndTime
+        remiderDate?.addTarget(self, action: #selector(CreateTodoViewController.dateChanged(datePicker:)), for: .valueChanged)
         
+        dateTextField.inputView = remiderDate
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTodoViewController.viewTapped(gestureReconizer:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy HH:mm a"
+        
+        dateTextField.text = formatter.string(from: datePicker.date)
+        //view.endEditing(true)
+    }
+    
+    @objc func viewTapped(gestureReconizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-      
-        guard let title = titleTextField.text, !title.isEmpty else { return }
         
+        guard let title = titleTextField.text, !title.isEmpty,
+            let reminderTime = remiderDate?.date else { return }
         let notes = notesTextView.text
-        let reminderTime = datePicker.date
         
         
-       Todo(title: title, notes: notes, reminderTime: reminderTime)
-  
+        
+        let todo = Todo(title: title, notes: notes, reminderTime: reminderTime)
+        todoController?.sendTodosToServer(todo: todo)
+        
         do {
-        try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.mainContext.save()
             navigationController?.dismiss(animated: true, completion: nil)
-            print(reminderTime)
+            print(todo)
         } catch {
             NSLog("Error saving managed object context with error: \(error)")
         }
@@ -61,14 +79,4 @@ class CreateTodoViewController: UIViewController {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
