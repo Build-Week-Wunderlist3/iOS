@@ -53,7 +53,7 @@ final class AuthenticaticationController {
                 }
                 print(response)
                 guard let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 else {
+                    response.statusCode == 201 else {
                         NSLog("Register user was unsuccessful")
                         completion(.failure(.failedSignUp))
                         return
@@ -109,15 +109,5 @@ final class AuthenticaticationController {
             NSLog("Etrror encoding user: \(error)")
             completion(.failure(.failedSignIn))
         }
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
 }
