@@ -11,8 +11,10 @@ import CoreData
 
 class TodoTableViewController: UITableViewController {
     
-    //MARK: Properties
-    
+    //MARK: Properites
+    var authenticaticationController: AuthenticaticationController?
+    let todoController = TodoController()
+    //Fetch Controller 
     lazy var fetchResultController: NSFetchedResultsController<Todo> = {
         let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "reminderTime", ascending: true),
@@ -30,8 +32,6 @@ class TodoTableViewController: UITableViewController {
         return frc
     }()
     
-    let todoController = TodoController()
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,7 +46,9 @@ class TodoTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.reusableIdentifier, for: indexPath) as? TodoTableViewCell else { fatalError("Cannot dequeue cell of type: \(TodoTableViewCell.reusableIdentifier)") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.reusableIdentifier, for: indexPath) as? TodoTableViewCell else { fatalError("Cannot dequeue cell of type: \(TodoTableViewCell.reusableIdentifier)")
+            
+        }
         
         cell.todo = fetchResultController.object(at: indexPath)
         
@@ -76,9 +78,11 @@ class TodoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let sectionInfo = fetchResultController.sections?[section] else { return nil }
-        
-        
-        return sectionInfo.name
+        let storedString = sectionInfo.name
+        let string = storedString.components(separatedBy: " ").dropLast()
+        let newDate = String(string.joined(separator: " ").dropLast(3))
+        return newDate
+       
         
     }
     
@@ -106,13 +110,17 @@ class TodoTableViewController: UITableViewController {
                 let createTodoVC = navC.viewControllers.first as? CreateTodoViewController {
                 createTodoVC.todoController = todoController
             }
+            
+        } else if segue.identifier == "ToTodoDetail" {
+            if let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.todo = fetchResultController.object(at: indexPath)
+                detailVC.todoController = self.todoController
+            }
         }
     }
     
-    
 }
-
-
 //extension Date {
 //   static func getFormattedDateString(format: String) -> String {
 //        let dateFormatter = DateFormatter()
@@ -173,3 +181,4 @@ extension TodoTableViewController: NSFetchedResultsControllerDelegate {
         }
     }
 }
+

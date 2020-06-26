@@ -33,6 +33,7 @@ class CreateTodoViewController: UIViewController {
     private func setupDatePicker() {
         remiderDate = UIDatePicker()
         remiderDate?.datePickerMode = .dateAndTime
+        remiderDate?.timeZone = .autoupdatingCurrent
         remiderDate?.addTarget(self, action: #selector(CreateTodoViewController.dateChanged(datePicker:)), for: .valueChanged)
         
         dateTextField.inputView = remiderDate
@@ -46,7 +47,6 @@ class CreateTodoViewController: UIViewController {
         formatter.dateFormat = "MM/dd/yy HH:mm a"
         
         dateTextField.text = formatter.string(from: datePicker.date)
-        //view.endEditing(true)
     }
     
     @objc func viewTapped(gestureReconizer: UITapGestureRecognizer) {
@@ -56,12 +56,14 @@ class CreateTodoViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
         guard let title = titleTextField.text, !title.isEmpty,
-            let reminderTime = remiderDate?.date else { return }
+            let reminderTime = dateTextField.text else { return }
+        //remiderDate?.date
         let notes = notesTextView.text
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy HH:mm a"
         
-        
-        let todo = Todo(title: title, notes: notes, reminderTime: reminderTime)
+        let todo = Todo(title: title, notes: notes, reminderTime: formatter.date(from: reminderTime)!)
         todoController?.sendTodosToServer(todo: todo)
         
         do {

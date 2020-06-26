@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CA39656624A1C89900849307 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39656524A1C89900849307 /* TodoController.swift */; };
+		CA4FF28424A2B70B0050C6D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */; };
+		CA4FF28624A2E9070050C6D6 /* Authentication￼Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */; };
 		CA503A13249AFDC100AF1B57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A12249AFDC100AF1B57 /* AppDelegate.swift */; };
 		CA503A15249AFDC100AF1B57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A14249AFDC100AF1B57 /* SceneDelegate.swift */; };
 		CA503A1A249AFDC100AF1B57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA503A18249AFDC100AF1B57 /* Main.storyboard */; };
@@ -15,8 +17,7 @@
 		CA503A1F249AFDC700AF1B57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA503A1D249AFDC700AF1B57 /* LaunchScreen.storyboard */; };
 		CA503A29249B2D3400AF1B57 /* WelcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A28249B2D3400AF1B57 /* WelcomingViewController.swift */; };
 		CA503A2B249B2D4500AF1B57 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A2A249B2D4500AF1B57 /* SignUpViewController.swift */; };
-		CA503A2D249B2D5500AF1B57 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A2C249B2D5500AF1B57 /* LogInViewController.swift */; };
-		CA503A2F249B339C00AF1B57 /* PasswordSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A2E249B339C00AF1B57 /* PasswordSetUp.swift */; };
+		CA503A2F249B339C00AF1B57 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A2E249B339C00AF1B57 /* ActivityIndicator.swift */; };
 		CA8FB381249C597200D6834B /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB380249C597200D6834B /* TodoTableViewCell.swift */; };
 		CA8FB383249C598D00D6834B /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB382249C598D00D6834B /* TodoTableViewController.swift */; };
 		CA8FB386249C5E2A00D6834B /* Wunderlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB384249C5E2A00D6834B /* Wunderlist.xcdatamodeld */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		CA39656524A1C89900849307 /* TodoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoController.swift; sourceTree = "<group>"; };
+		CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Authentication￼Controller.swift"; sourceTree = "<group>"; };
 		CA503A0F249AFDC100AF1B57 /* Wunderlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wunderlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA503A12249AFDC100AF1B57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA503A14249AFDC100AF1B57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,8 +40,7 @@
 		CA503A20249AFDC700AF1B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA503A28249B2D3400AF1B57 /* WelcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomingViewController.swift; sourceTree = "<group>"; };
 		CA503A2A249B2D4500AF1B57 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		CA503A2C249B2D5500AF1B57 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		CA503A2E249B339C00AF1B57 /* PasswordSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSetUp.swift; sourceTree = "<group>"; };
+		CA503A2E249B339C00AF1B57 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CA8FB380249C597200D6834B /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodoTableViewCell.swift; path = "Wunderlist/View Controllers/TodoTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		CA8FB382249C598D00D6834B /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		CA8FB385249C5E2A00D6834B /* Wunderlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wunderlist.xcdatamodel; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				CA39656524A1C89900849307 /* TodoController.swift */,
+				CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -105,9 +108,9 @@
 			children = (
 				CA503A28249B2D3400AF1B57 /* WelcomingViewController.swift */,
 				CA503A2A249B2D4500AF1B57 /* SignUpViewController.swift */,
-				CA503A2C249B2D5500AF1B57 /* LogInViewController.swift */,
 				CA8FB382249C598D00D6834B /* TodoTableViewController.swift */,
 				CA8FB389249C778300D6834B /* CreateTodoViewController.swift */,
+				CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -143,7 +146,7 @@
 		CA8FB37E249C58EC00D6834B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CA503A2E249B339C00AF1B57 /* PasswordSetUp.swift */,
+				CA503A2E249B339C00AF1B57 /* ActivityIndicator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -231,14 +234,15 @@
 				CABD3CF424A1D0DF00FFE152 /* TodoRepresentation.swift in Sources */,
 				CA8FB383249C598D00D6834B /* TodoTableViewController.swift in Sources */,
 				CA503A29249B2D3400AF1B57 /* WelcomingViewController.swift in Sources */,
-				CA503A2F249B339C00AF1B57 /* PasswordSetUp.swift in Sources */,
+				CA503A2F249B339C00AF1B57 /* ActivityIndicator.swift in Sources */,
 				CA8FB386249C5E2A00D6834B /* Wunderlist.xcdatamodeld in Sources */,
 				CA8FB381249C597200D6834B /* TodoTableViewCell.swift in Sources */,
 				CA8FB38C249C814B00D6834B /* Todo+Convenience.swift in Sources */,
 				CA8FB38A249C778300D6834B /* CreateTodoViewController.swift in Sources */,
 				CA8FB388249C657A00D6834B /* CoreDataStack.swift in Sources */,
-				CA503A2D249B2D5500AF1B57 /* LogInViewController.swift in Sources */,
+				CA4FF28624A2E9070050C6D6 /* Authentication￼Controller.swift in Sources */,
 				CA503A13249AFDC100AF1B57 /* AppDelegate.swift in Sources */,
+				CA4FF28424A2B70B0050C6D6 /* DetailViewController.swift in Sources */,
 				CA39656624A1C89900849307 /* TodoController.swift in Sources */,
 				CA503A15249AFDC100AF1B57 /* SceneDelegate.swift in Sources */,
 			);
@@ -394,7 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bohdantkachenko.Wunderlist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -412,7 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bohdantkachenko.Wunderlist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

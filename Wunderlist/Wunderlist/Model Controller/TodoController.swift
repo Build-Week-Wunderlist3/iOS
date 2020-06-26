@@ -28,11 +28,33 @@ class TodoController {
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     
     init() {
-        
+        fetchTodosFromServer()
     }
     
     func fetchTodosFromServer(completion: @escaping CompletionHandler = { _ in }) {
+        let requestURL = baseURL.appendingPathExtension("json")
         
+        URLSession.shared.dataTask(with: requestURL) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching todos with: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from Firebase (Fetching todos)")
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let todoRepresentation = Array(try JSONDecoder().decode([String: TodoRepresentation].self, from: data).values)
+                try self.updateTodos(with: todoRepresentation)
+            } catch {
+                NSLog("Error decoding todo from Firebase: \(error)")
+                completion(.failure(.noDecode))
+            }
+        }.resume()
     }
     
     func sendTodosToServer(todo: Todo, completion: @escaping CompletionHandler = { _ in }) {
@@ -66,15 +88,41 @@ class TodoController {
         }.resume()
     }
     
-     private func updateTodos(with representations: [TodoRepresentation]) throws {
+    private func updateTodos(with representations: [TodoRepresentation]) throws {
+        let reminderTimeToFetch = representations.compactMap { $0.reminderTime }
+        let representationByTime = Dictionary(uniqueKeysWithValues: zip(reminderTimeToFetch, representations))
+        var todoToCreate = representationByTime
         
+        let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "reminderTime IN %@", reminderTimeToFetch)
+        
+        let context = CoreDataStack.shared.mainContext
+        
+            let existingTodos = try context.fetch(fetchRequest)
+            
+            for todo in existingTodos {
+                guard let time = todo.reminderTime,
+                    let representation = representationByTime[time] else { continue }
+                self.update(todo: todo, with: representation)
+                todoToCreate.removeValue(forKey: time)
+            }
+            
+            for representation in todoToCreate.values {
+                Todo(todoRepresenation: representation, context: context)
+            }
+            
+            try context.save()
+
     }
     
     private func update(todo: Todo, with representation: TodoRepresentation) {
-        
+        todo.title = representation.title
+        todo.notes = representation.notes
+        todo.complete = representation.complete
+        todo.reminderTime = representation.reminderTime
     }
     
-     func deleteTaskFromServer(_ todo: Todo, completion: @escaping CompletionHandler = { _ in }) {
+    func deleteTaskFromServer(_ todo: Todo, completion: @escaping CompletionHandler = { _ in }) {
         guard let uuid = todo.identifier else {
             completion(.failure(.noIdentifier))
             return
@@ -83,7 +131,7 @@ class TodoController {
         let requestURL = baseURL.appendingPathComponent(uuid.uuidString).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
-
+        
         URLSession.shared.dataTask(with: request) { (_, _, error) in
             if let error = error {
                 NSLog("Error deleting todo from server \(todo), \(error)")
@@ -93,9 +141,4 @@ class TodoController {
             completion(.success(true))
         }.resume()
     }
-    
-     private func saveToPersistentStore() throws {
-        
-    }
-    
 }

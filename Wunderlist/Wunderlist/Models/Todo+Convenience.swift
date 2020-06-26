@@ -15,12 +15,12 @@ extension Todo {
         guard let id = identifier,
             let title = title,
             let date = reminderTime else { return nil }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
-          let theDate = dateFormatter.string(from: date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .medium
+//          let theDate = dateFormatter.string(from: date)
         
-        return TodoRepresentation(title: title, identifier: id.uuidString, complete: complete, notes: notes, reminderTime: theDate)
+        return TodoRepresentation(title: title, identifier: id.uuidString, complete: complete, notes: notes, reminderTime: date)
     }
     
     //create new managed object
@@ -43,12 +43,12 @@ extension Todo {
     //convert into todo
     @discardableResult convenience init?(todoRepresenation: TodoRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         guard let uuid = UUID(uuidString: todoRepresenation.identifier) else { return nil }
-        let dateFormatter = DateFormatter()
-              dateFormatter.dateStyle = .medium
-              dateFormatter.timeStyle = .medium
-        let theDate = dateFormatter.date(from: todoRepresenation.reminderTime)
+//        let dateFormatter = DateFormatter()
+//              dateFormatter.dateStyle = .medium
+//              dateFormatter.timeStyle = .medium
+//        let theDate = dateFormatter.date(from: todoRepresenation.reminderTime)
         
-        self.init(identifier: uuid, title: todoRepresenation.title, notes: todoRepresenation.notes, complete: todoRepresenation.complete, reminderTime: theDate ?? Date(), context: context)
+        self.init(identifier: uuid, title: todoRepresenation.title, notes: todoRepresenation.notes, complete: todoRepresenation.complete, reminderTime: todoRepresenation.reminderTime, context: context)
     }
     
     

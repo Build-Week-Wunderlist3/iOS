@@ -13,6 +13,6 @@ struct TodoRepresentation: Codable {
     let identifier: String
     let complete: Bool
     let notes: String?
-    let reminderTime: String
+    let reminderTime: Date
     
 }
