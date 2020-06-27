@@ -61,6 +61,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TTb-37-ECa"/>
+                                    <segue destination="kdB-Jf-gSv" kind="presentation" identifier="ToToDoVC" modalPresentationStyle="fullScreen" id="aP0-oj-b00"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,7 +75,6 @@
                         <outlet property="logButton" destination="pyk-RX-b1N" id="Gck-Au-rb0"/>
                         <outlet property="passwordLabel" destination="EXP-Oe-jWD" id="BKk-Be-WbJ"/>
                         <outlet property="usernameLabel" destination="mGX-oZ-YBF" id="ZmY-f3-DZo"/>
-                        <segue destination="kdB-Jf-gSv" kind="showDetail" identifier="ToTodoVC" id="E17-V0-Sbc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

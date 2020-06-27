@@ -46,10 +46,11 @@ class TodoTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.reusableIdentifier, for: indexPath) as? TodoTableViewCell else { fatalError("Cannot dequeue cell of type: \(TodoTableViewCell.reusableIdentifier)")
-            
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.reusableIdentifier, for: indexPath) as? TodoTableViewCell
+            else {
+                fatalError("Cannot dequeue cell of type: \(TodoTableViewCell.reusableIdentifier)")
         }
-        
+        cell.delegate = self
         cell.todo = fetchResultController.object(at: indexPath)
         
         return cell
@@ -82,35 +83,16 @@ class TodoTableViewController: UITableViewController {
         let string = storedString.components(separatedBy: " ").dropLast()
         let newDate = String(string.joined(separator: " ").dropLast(3))
         return newDate
-       
+        
         
     }
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToCreateVC" {
             if let navC = segue.destination as? UINavigationController,
                 let createTodoVC = navC.viewControllers.first as? CreateTodoViewController {
-                createTodoVC.todoController = todoController
+                createTodoVC.todoController = self.todoController
             }
-            
         } else if segue.identifier == "ToTodoDetail" {
             if let detailVC = segue.destination as? DetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow {
@@ -121,16 +103,6 @@ class TodoTableViewController: UITableViewController {
     }
     
 }
-//extension Date {
-//   static func getFormattedDateString(format: String) -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = format
-//        dateFormatter.timeZone = TimeZone.current
-//        return dateFormatter.string(from: format)
-//    }
-//}
-
-
 
 extension TodoTableViewController: NSFetchedResultsControllerDelegate {
     
@@ -182,3 +154,8 @@ extension TodoTableViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+extension TodoTableViewController: TodoTableViewCellDelegate {
+    func didUpdateTodo(todo: Todo) {
+        todoController.sendTodosToServer(todo: todo)
+    }
+}

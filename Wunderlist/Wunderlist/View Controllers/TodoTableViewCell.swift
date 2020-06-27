@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol TodoTableViewCellDelegate: class {
+    func didUpdateTodo(todo: Todo)
+}
+
 class TodoTableViewCell: UITableViewCell {
 
     
     //MARK: Properties:
+    weak var delegate: TodoTableViewCellDelegate?
+    
     var todo: Todo? {
         didSet {
             updateViews()
@@ -50,6 +56,13 @@ class TodoTableViewCell: UITableViewCell {
                    return
                }
         todo.complete.toggle()
+        
         sender.setImage(todo.complete ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"), for: .normal)
+        delegate?.didUpdateTodo(todo: todo)
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
     }
 }

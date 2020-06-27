@@ -38,15 +38,17 @@ class SignUpViewController: UIViewController {
     //MARK: Actions
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        
+        self.showSpinner()
         if let username = usernameLabel.text, !username.isEmpty,
             let password = passwordLabel.text, !password.isEmpty {
             let user = User(username: username, password: password)
-            if loginType == .signUp {
+            switch loginType {
+            case .signUp:
                 authenticaticationController.register(with: user, completion: { (result) in
                     do {
                         let success = try result.get()
                         if success {
-                            self.showSpinner()
                             DispatchQueue.main.async {
                                 let alertController = UIAlertController(title: "Welcom to Wunderland", message: "Wunderland 3.0", preferredStyle: .alert)
                                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -55,6 +57,7 @@ class SignUpViewController: UIViewController {
                                     self.loginType = .signIn
                                     self.navigationController?.title = "LogIn"
                                     self.logButton.setTitle("LogIn", for: .normal)
+                                    
                                 }
                             }
                         }
@@ -62,7 +65,7 @@ class SignUpViewController: UIViewController {
                         NSLog("Error sregister: \(error)")
                     }
                 })
-            } else {
+            case .signIn:
                 authenticaticationController.signIn(with: user, completion: { (result) in
                     do {
                         let success = try result.get()
@@ -123,7 +126,7 @@ class SignUpViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToTodo" {
+        if segue.identifier == "ToToDoVC" && authenticaticationController.bearer != nil {
             // inject dependencies
             if let loginVC = segue.destination as? TodoTableViewController {
                 loginVC.authenticaticationController = authenticaticationController

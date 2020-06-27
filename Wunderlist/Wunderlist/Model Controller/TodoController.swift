@@ -23,6 +23,8 @@ enum NetworkError: Error {
 
 class TodoController {
     
+    let auth = AuthenticaticationController()
+    
     let baseURL = URL(string: "https://wunderlist-675bd.firebaseio.com/")!
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
@@ -58,6 +60,7 @@ class TodoController {
     }
     
     func sendTodosToServer(todo: Todo, completion: @escaping CompletionHandler = { _ in }) {
+        //print(auth.bearer)
         guard let uuid = todo.identifier else {
             completion(.failure(.noIdentifier))
             return

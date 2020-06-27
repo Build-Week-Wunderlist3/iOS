@@ -38,7 +38,6 @@ final class AuthenticaticationController {
         var request = URLRequest(url: registerURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        print(user)
         do {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
@@ -51,7 +50,6 @@ final class AuthenticaticationController {
                     completion(.failure(.failedSignUp))
                     return
                 }
-                print(response)
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 201 else {
                         NSLog("Register user was unsuccessful")
@@ -69,6 +67,7 @@ final class AuthenticaticationController {
     
     // SignIn User
     func signIn(with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+        
         var request = URLRequest(url: loginURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

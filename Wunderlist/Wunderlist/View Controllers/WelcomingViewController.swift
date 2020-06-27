@@ -48,7 +48,7 @@ class WelcomingViewController: UIViewController {
             if let detailVC = segue.destination as? SignUpViewController {
                 detailVC.title = "Log In"
                 detailVC.loginType = LoginType.signIn
-             // detailVC.logButton.setTitle("LogIn", for: .normal) ASK!!!!!!!
+            // detailVC.logButton.setTitle("LogIn", for: .normal)
             }
             
             
