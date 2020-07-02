@@ -92,24 +92,25 @@ class TodoController {
     }
     
     private func updateTodos(with representations: [TodoRepresentation]) throws {
-        let reminderTimeToFetch = representations.compactMap { $0.reminderTime }
-        let representationByTime = Dictionary(uniqueKeysWithValues: zip(reminderTimeToFetch, representations))
-        var todoToCreate = representationByTime
+        let identifiersToFetch = representations.compactMap { UUID(uuidString: $0.identifier) }
+        let representationByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+        var todoToCreate = representationByID
         
         let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "reminderTime IN %@", reminderTimeToFetch)
+        fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
         
         let context = CoreDataStack.shared.mainContext
         
             let existingTodos = try context.fetch(fetchRequest)
-            
+            //Existing TODOS
             for todo in existingTodos {
-                guard let time = todo.reminderTime,
-                    let representation = representationByTime[time] else { continue }
+                guard let id = todo.identifier,
+                    let representation = representationByID[id] else { continue }
                 self.update(todo: todo, with: representation)
-                todoToCreate.removeValue(forKey: time)
+                todoToCreate.removeValue(forKey: id)
             }
             
+            //New TODOS
             for representation in todoToCreate.values {
                 Todo(todoRepresenation: representation, context: context)
             }

@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var usernameLabel: UITextField!
     @IBOutlet var passwordLabel: UITextField!
     @IBOutlet var logButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -107,6 +108,7 @@ class SignUpViewController: UIViewController {
     }
     
     private func setupViews() {
+        errorLabel.alpha = 0
         logButton.layer.cornerRadius = 5.0
         logButton.layer.borderWidth = 1.0
         logButton.layer.borderColor = textFieldBorderColor.cgColor

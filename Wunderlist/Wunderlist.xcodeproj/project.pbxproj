@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA39656624A1C89900849307 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39656524A1C89900849307 /* TodoController.swift */; };
+		CA48DAB424AE8D2800FD0B1B /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA48DAB324AE8D2800FD0B1B /* GoogleService-Info-3.plist */; };
 		CA4FF28424A2B70B0050C6D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */; };
 		CA4FF28624A2E9070050C6D6 /* Authentication￼Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */; };
 		CA503A13249AFDC100AF1B57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A12249AFDC100AF1B57 /* AppDelegate.swift */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		CA39656524A1C89900849307 /* TodoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoController.swift; sourceTree = "<group>"; };
+		CA486A9024A7C9BC00F5D6DC /* Wunderlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Wunderlist 2.xcdatamodel"; sourceTree = "<group>"; };
+		CA48DAB324AE8D2800FD0B1B /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
 		CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Authentication￼Controller.swift"; sourceTree = "<group>"; };
 		CA503A0F249AFDC100AF1B57 /* Wunderlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wunderlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +102,7 @@
 				CA8FB37F249C590F00D6834B /* Resources */,
 				CA8FB37E249C58EC00D6834B /* Helpers */,
 				CA503A20249AFDC700AF1B57 /* Info.plist */,
+				CA48DAB324AE8D2800FD0B1B /* GoogleService-Info-3.plist */,
 			);
 			path = Wunderlist;
 			sourceTree = "<group>";
@@ -220,6 +224,7 @@
 				CA503A1F249AFDC700AF1B57 /* LaunchScreen.storyboard in Resources */,
 				CA503A1C249AFDC700AF1B57 /* Assets.xcassets in Resources */,
 				CA503A1A249AFDC100AF1B57 /* Main.storyboard in Resources */,
+				CA48DAB424AE8D2800FD0B1B /* GoogleService-Info-3.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +452,7 @@
 		CA8FB384249C5E2A00D6834B /* Wunderlist.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				CA486A9024A7C9BC00F5D6DC /* Wunderlist 2.xcdatamodel */,
 				CA8FB385249C5E2A00D6834B /* Wunderlist.xcdatamodel */,
 			);
 			currentVersion = CA8FB385249C5E2A00D6834B /* Wunderlist.xcdatamodel */;

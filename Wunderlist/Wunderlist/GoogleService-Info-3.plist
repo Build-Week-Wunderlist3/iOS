@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>338909774045-mt4r6mdhc0pf51tpkl1ko4ghjhp814b5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.338909774045-mt4r6mdhc0pf51tpkl1ko4ghjhp814b5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCGopPOtHq7ag95jfCvNd8saKZY5MbPAxE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>338909774045</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bohdantkachenko.Wunderlist</string>
+	<key>PROJECT_ID</key>
+	<string>wunderlist-675bd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wunderlist-675bd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:338909774045:ios:56ca5baa34f9150c7bdb34</string>
+	<key>DATABASE_URL</key>
+	<string>https://wunderlist-675bd.firebaseio.com</string>
+</dict>
+</plist>

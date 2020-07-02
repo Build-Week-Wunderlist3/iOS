@@ -11,6 +11,7 @@ import CoreData
 
 class TodoTableViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     //MARK: Properites
     var authenticaticationController: AuthenticaticationController?
     let todoController = TodoController()
@@ -31,6 +32,25 @@ class TodoTableViewController: UITableViewController {
         }
         return frc
     }()
+    //MARK: View LifeSycle
+    override func viewDidLoad() {
+          super.viewDidLoad()
+          
+          searchBar.delegate = self
+      }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func refreshData(_ sender: Any) {
+        todoController.fetchTodosFromServer { (_) in
+            self.refreshControl?.endRefreshing()
+        }
+    }
     
     // MARK: - Table view data source
     
@@ -98,6 +118,7 @@ class TodoTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.todo = fetchResultController.object(at: indexPath)
                 detailVC.todoController = self.todoController
+                detailVC.title = "Details"
             }
         }
     }
@@ -158,4 +179,12 @@ extension TodoTableViewController: TodoTableViewCellDelegate {
     func didUpdateTodo(todo: Todo) {
         todoController.sendTodosToServer(todo: todo)
     }
+}
+
+
+extension TodoTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text else { return }
+   
+}
 }

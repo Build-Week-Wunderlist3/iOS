@@ -61,6 +61,7 @@ class CreateTodoViewController: UIViewController {
         let notes = notesTextView.text
         
         let formatter = DateFormatter()
+        formatter.timeZone = .current
         formatter.dateFormat = "MM/dd/yy HH:mm a"
         
         let todo = Todo(title: title, notes: notes, reminderTime: formatter.date(from: reminderTime)!)
