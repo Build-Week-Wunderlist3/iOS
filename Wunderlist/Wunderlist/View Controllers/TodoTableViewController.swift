@@ -8,13 +8,15 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class TodoTableViewController: UITableViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+
     //MARK: Properites
-    var authenticaticationController: AuthenticaticationController?
     let todoController = TodoController()
+   
+    
     //Fetch Controller 
     lazy var fetchResultController: NSFetchedResultsController<Todo> = {
         let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
@@ -32,19 +34,25 @@ class TodoTableViewController: UITableViewController {
         }
         return frc
     }()
+    
     //MARK: View LifeSycle
-    override func viewDidLoad() {
-          super.viewDidLoad()
-          
-          searchBar.delegate = self
-      }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
+        //Request a permision for notificatios to appear
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (sucsses, error) in
+            if sucsses {
+                //Call the method to test if sucsses
+                
+            } else if let error = error {
+                print("Error schd notificaton")
+            }
+        }
         tableView.reloadData()
     }
-    
+
+
     
     @IBAction func refreshData(_ sender: Any) {
         todoController.fetchTodosFromServer { (_) in
@@ -99,6 +107,7 @@ class TodoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let sectionInfo = fetchResultController.sections?[section] else { return nil }
+        //Updating String to show correct form of date
         let storedString = sectionInfo.name
         let string = storedString.components(separatedBy: " ").dropLast()
         let newDate = String(string.joined(separator: " ").dropLast(3))
@@ -182,9 +191,28 @@ extension TodoTableViewController: TodoTableViewCellDelegate {
 }
 
 
-extension TodoTableViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchTerm = searchBar.text else { return }
-   
-}
-}
+
+
+////  UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (sucsses, error) in
+//          if sucsses {
+//              //Call the method to test if sucsses
+//              let content = UNMutableNotificationContent()
+//                   content.title = "Wunderlist Reminder"
+//                   content.sound = .default
+//                   content.body = "Hi"
+//
+//              let todo = self.fetchResultController.object(at: indexPath)
+//              let targetDate = todo.reminderTime!
+//
+//              let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: targetDate), repeats: false)
+//              let request = UNNotificationRequest(identifier: "with ID", content: content, trigger: trigger)
+//              UNUserNotificationCenter.current().add(request) { (error) in
+//                  if let error = error {
+//                      print("Error to send Notification ")
+//                  }
+//              }
+//              self.scheduleNotification()
+//          } else if let error = error {
+//              print("Error schd notificaton")
+//          }
+//      }

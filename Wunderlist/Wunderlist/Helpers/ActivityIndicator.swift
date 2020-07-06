@@ -9,7 +9,7 @@
 import UIKit
 
 fileprivate var aView: UIView?
-
+//Spinner activity setup
 extension UIViewController {
     
     func showSpinner() {

@@ -14,7 +14,6 @@ class WelcomingViewController: UIViewController {
     private let buttonBorderColor = UIColor(hue: 208/360.0, saturation: 80/100.0, brightness: 94/100.0, alpha: 1)
     
     //MARK: Outlets
-    
     @IBOutlet var welcomLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
@@ -31,10 +30,10 @@ class WelcomingViewController: UIViewController {
     
     //MARK: Actions
     private func setupViews() {
-        signupButton.layer.cornerRadius = 5.0
-        loginButton.layer.cornerRadius = 5.0
-        signupButton.layer.borderWidth = 1.0
-        loginButton.layer.borderWidth = 1.0
+        signupButton.layer.cornerRadius = 25.0
+        loginButton.layer.cornerRadius = 25.0
+        signupButton.layer.borderWidth = 2.0
+        loginButton.layer.borderWidth = 2.0
         signupButton.layer.borderColor = buttonBorderColor.cgColor
         loginButton.layer.borderColor = buttonBorderColor.cgColor
     }
@@ -48,7 +47,6 @@ class WelcomingViewController: UIViewController {
             if let detailVC = segue.destination as? SignUpViewController {
                 detailVC.title = "Log In"
                 detailVC.loginType = LoginType.signIn
-            // detailVC.logButton.setTitle("LogIn", for: .normal)
             }
             
             

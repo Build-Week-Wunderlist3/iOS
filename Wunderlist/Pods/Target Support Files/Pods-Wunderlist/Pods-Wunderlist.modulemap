@@ -1,0 +1,6 @@
+framework module Pods_Wunderlist {
+  umbrella header "Pods-Wunderlist-umbrella.h"
+
+  export *
+  module * { export * }
+}

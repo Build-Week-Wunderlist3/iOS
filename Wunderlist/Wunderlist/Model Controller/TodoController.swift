@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 enum NetworkError: Error {
     case noIdentifier
     case otherError
@@ -24,6 +23,7 @@ enum NetworkError: Error {
 class TodoController {
     
     let auth = AuthenticaticationController()
+     public var completion: ((String, String, Date) -> Void)?
     
     let baseURL = URL(string: "https://wunderlist-675bd.firebaseio.com/")!
     

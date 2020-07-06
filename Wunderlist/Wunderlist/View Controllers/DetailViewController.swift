@@ -56,6 +56,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        //Updating TODO if it was edited
         if wasEdited {
             guard let title = titleTextField.text, !title.isEmpty,
                 let todo = todo,

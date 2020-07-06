@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83700E979884FE140D93CFC3 /* Pods_Wunderlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204AB97CF408337FACC375DE /* Pods_Wunderlist.framework */; };
 		CA39656624A1C89900849307 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39656524A1C89900849307 /* TodoController.swift */; };
-		CA48DAB424AE8D2800FD0B1B /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA48DAB324AE8D2800FD0B1B /* GoogleService-Info-3.plist */; };
+		CA48DAB424AE8D2800FD0B1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA48DAB324AE8D2800FD0B1B /* GoogleService-Info.plist */; };
 		CA4FF28424A2B70B0050C6D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */; };
 		CA4FF28624A2E9070050C6D6 /* Authentication￼Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */; };
 		CA503A13249AFDC100AF1B57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA503A12249AFDC100AF1B57 /* AppDelegate.swift */; };
@@ -29,9 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1163AC2A857F4312F65992BC /* Pods-Wunderlist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wunderlist.debug.xcconfig"; path = "Target Support Files/Pods-Wunderlist/Pods-Wunderlist.debug.xcconfig"; sourceTree = "<group>"; };
+		204AB97CF408337FACC375DE /* Pods_Wunderlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wunderlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D08E2052943126D2B46B66 /* Pods-Wunderlist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wunderlist.release.xcconfig"; path = "Target Support Files/Pods-Wunderlist/Pods-Wunderlist.release.xcconfig"; sourceTree = "<group>"; };
 		CA39656524A1C89900849307 /* TodoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoController.swift; sourceTree = "<group>"; };
 		CA486A9024A7C9BC00F5D6DC /* Wunderlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Wunderlist 2.xcdatamodel"; sourceTree = "<group>"; };
-		CA48DAB324AE8D2800FD0B1B /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
+		CA48DAB324AE8D2800FD0B1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA4FF28324A2B70B0050C6D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA4FF28524A2E9070050C6D6 /* Authentication￼Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Authentication￼Controller.swift"; sourceTree = "<group>"; };
 		CA503A0F249AFDC100AF1B57 /* Wunderlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wunderlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,12 +62,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83700E979884FE140D93CFC3 /* Pods_Wunderlist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4419CC2F599A680736E8D4C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1163AC2A857F4312F65992BC /* Pods-Wunderlist.debug.xcconfig */,
+				58D08E2052943126D2B46B66 /* Pods-Wunderlist.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9A81E634FEDE853A6B8288AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				204AB97CF408337FACC375DE /* Pods_Wunderlist.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA39656424A1C87000849307 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +100,8 @@
 			children = (
 				CA503A11249AFDC100AF1B57 /* Wunderlist */,
 				CA503A10249AFDC100AF1B57 /* Products */,
+				4419CC2F599A680736E8D4C1 /* Pods */,
+				9A81E634FEDE853A6B8288AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,7 +126,7 @@
 				CA8FB37F249C590F00D6834B /* Resources */,
 				CA8FB37E249C58EC00D6834B /* Helpers */,
 				CA503A20249AFDC700AF1B57 /* Info.plist */,
-				CA48DAB324AE8D2800FD0B1B /* GoogleService-Info-3.plist */,
+				CA48DAB324AE8D2800FD0B1B /* GoogleService-Info.plist */,
 			);
 			path = Wunderlist;
 			sourceTree = "<group>";
@@ -170,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA503A23249AFDC700AF1B57 /* Build configuration list for PBXNativeTarget "Wunderlist" */;
 			buildPhases = (
+				15101DE03E3CB0A8E9A8E0C7 /* [CP] Check Pods Manifest.lock */,
 				CA503A0B249AFDC100AF1B57 /* Sources */,
 				CA503A0C249AFDC100AF1B57 /* Frameworks */,
 				CA503A0D249AFDC100AF1B57 /* Resources */,
+				A247424C9C1838196159055F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,11 +250,53 @@
 				CA503A1F249AFDC700AF1B57 /* LaunchScreen.storyboard in Resources */,
 				CA503A1C249AFDC700AF1B57 /* Assets.xcassets in Resources */,
 				CA503A1A249AFDC100AF1B57 /* Main.storyboard in Resources */,
-				CA48DAB424AE8D2800FD0B1B /* GoogleService-Info-3.plist in Resources */,
+				CA48DAB424AE8D2800FD0B1B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15101DE03E3CB0A8E9A8E0C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wunderlist-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A247424C9C1838196159055F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wunderlist/Pods-Wunderlist-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wunderlist/Pods-Wunderlist-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wunderlist/Pods-Wunderlist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA503A0B249AFDC100AF1B57 /* Sources */ = {
@@ -391,6 +459,7 @@
 		};
 		CA503A24249AFDC700AF1B57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1163AC2A857F4312F65992BC /* Pods-Wunderlist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -409,6 +478,7 @@
 		};
 		CA503A25249AFDC700AF1B57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58D08E2052943126D2B46B66 /* Pods-Wunderlist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

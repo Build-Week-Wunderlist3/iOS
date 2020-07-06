@@ -8,6 +8,7 @@
 
 import Foundation
 
+//MARK: Code for server made by back-end student
 struct Bearer: Codable {
     let token: String
 }
@@ -33,7 +34,6 @@ final class AuthenticaticationController {
     var bearer: Bearer?
     
     //Register the user
-    
     func register(with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = URLRequest(url: registerURL)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -81,7 +81,6 @@ final class AuthenticaticationController {
                     completion(.failure(.failedSignIn))
                     return
                 }
-                print(response)
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 200 else {
                         NSLog("SignIn was unsuccessful")
@@ -98,7 +97,6 @@ final class AuthenticaticationController {
                     let decoder = JSONDecoder()
                     self.bearer = try decoder.decode(Bearer.self, from: data)
                     completion(.success(true))
-                    print(self.bearer)
                 } catch {
                     NSLog("Error decoding with \(error)")
                     completion(.failure(.noToken))

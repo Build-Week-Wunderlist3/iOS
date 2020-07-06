@@ -14,10 +14,9 @@ class CreateTodoViewController: UIViewController {
     //MARK: Properties
     var todoController: TodoController?
     private var remiderDate: UIDatePicker?
-    //MARK: IBoutlets
     
+    //MARK: IBoutlets
     @IBOutlet var titleTextField: UITextField!
-    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var notesTextView: UITextView!
     @IBOutlet var dateTextField: UITextField!
     
@@ -29,13 +28,11 @@ class CreateTodoViewController: UIViewController {
     }
     
     //MARK: Actions
-    
     private func setupDatePicker() {
         remiderDate = UIDatePicker()
         remiderDate?.datePickerMode = .dateAndTime
         remiderDate?.timeZone = .autoupdatingCurrent
         remiderDate?.addTarget(self, action: #selector(CreateTodoViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
         dateTextField.inputView = remiderDate
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTodoViewController.viewTapped(gestureReconizer:)))
@@ -57,7 +54,6 @@ class CreateTodoViewController: UIViewController {
         
         guard let title = titleTextField.text, !title.isEmpty,
             let reminderTime = dateTextField.text else { return }
-        //remiderDate?.date
         let notes = notesTextView.text
         
         let formatter = DateFormatter()
@@ -78,7 +74,6 @@ class CreateTodoViewController: UIViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
