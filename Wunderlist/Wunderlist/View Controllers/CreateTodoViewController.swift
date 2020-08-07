@@ -24,7 +24,6 @@ class CreateTodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatePicker()
-        
     }
     
     //MARK: Actions
@@ -39,6 +38,7 @@ class CreateTodoViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    //Method for a target in Picker
     @objc func dateChanged(datePicker: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy HH:mm a"
@@ -51,7 +51,7 @@ class CreateTodoViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        
+        //Saving data to server
         guard let title = titleTextField.text, !title.isEmpty,
             let reminderTime = dateTextField.text else { return }
         let notes = notesTextView.text

@@ -37,6 +37,11 @@ class TodoTableViewController: UITableViewController {
     
     //MARK: View LifeSycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         

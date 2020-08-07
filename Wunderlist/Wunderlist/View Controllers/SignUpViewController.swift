@@ -19,7 +19,8 @@ enum LoginType {
 class SignUpViewController: UIViewController {
     
     //MARK: Properties
-    let authenticaticationController = AuthenticaticationController()
+    //Used with backend
+    //let authenticaticationController = AuthenticaticationController()
     private var showHideButton: UIButton = UIButton()
     private let textFieldBorderColor = UIColor(hue: 208/360.0, saturation: 80/100.0, brightness: 94/100.0, alpha: 1)
     var loginType = LoginType.signUp
@@ -39,6 +40,7 @@ class SignUpViewController: UIViewController {
     
     
     //MARK: Actions
+    //Password Validation
     private func isPasswordValid(_ password: String) -> Bool {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$")
         return passwordTest.evaluate(with: password)
@@ -51,11 +53,12 @@ class SignUpViewController: UIViewController {
         }
         let cleanPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if isPasswordValid(cleanPassword) == false {
-            return "Please make sure your password is at least 8 characters, contains uppercase alphabet and a number"
+            return "Please make sure your password is at least 8 characters, contains uppercase and lowercase alphabet and a number"
         }
         return nil
     }
     
+    //Error Label Config
     private func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.alpha = 1
@@ -63,7 +66,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
         
-       
+       //Validation
         let error = validateFields()
         if error != nil {
             showError(error!)
@@ -71,6 +74,7 @@ class SignUpViewController: UIViewController {
             if let email = emailTextField.text, !email.isEmpty,
                 let password = passwordTextField.text, !password.isEmpty {
                 switch loginType {
+                    //SignUp
                 case .signUp:
                      self.showSpinner()
                     Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
@@ -86,6 +90,7 @@ class SignUpViewController: UIViewController {
                             self.transitionToHome()
                         }
                     }
+                    //SignIn
                 case .signIn:
                      self.showSpinner()
                     Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
@@ -158,8 +163,8 @@ class SignUpViewController: UIViewController {
     private func transitionToHome() {
         let homeViewController = storyboard?.instantiateViewController(identifier: "WunderlistVC") as? TodoTableViewController
         self.navigationController?.pushViewController(homeViewController!, animated: true) //??
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
+//        view.window?.rootViewController = homeViewController
+//        view.window?.makeKeyAndVisible()
     }
     
     // SetUp Hide Button on PasswordTextField
